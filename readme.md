@@ -7,6 +7,7 @@
 ### Skills
 1. Front End Design
 - React
+- Redux
 - Animation Stuff (Spring)
 2. Back End
 - Node

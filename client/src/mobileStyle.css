@@ -1,0 +1,33 @@
+@media only screen and (min-width: 1000px) {
+  .component-wrapper {
+    min-width: 1000px
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .component-wrapper {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .about-wrapper {
+    flex-direction: column-reverse;
+  }
+  input.form-control, textarea.form-control {
+    width: 300px;
+  }
+  .skills-wrapper {
+    flex-direction: column;
+  }
+  .navbar-wrapper {
+    height: 130px;
+    flex-direction: column;
+  }
+  .navbar-logo {
+    padding: .25em;
+  }
+  .navbar-links ul {
+    padding: .25em;
+  }
+}
