@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FaHtml5, FaCss3, FaReact, FaNodeJs, FaArrowCircleRight, FaInfoCircle } from 'react-icons/fa'
+import { FaHtml5, FaCss3, FaGithub, FaNodeJs, FaArrowCircleRight, FaInfoCircle } from 'react-icons/fa'
 import { SiJavascript, SiRedux, SiMongodb } from 'react-icons/si'
 
 const portfolio = [
@@ -8,37 +8,41 @@ const portfolio = [
     name: "Ramcast",
     icon: <FaNodeJs />,
     path: "https://www.ramcaststeel.net/",
-    details: "A steel distribution company still using a paper catalog for their customers decided to upgrade their site."
+    details: "A steel distribution company still using a paper catalog for their customers decided to upgrade their site.",
   },
   {
     name: "Shopkeepers ToolBox",
     icon: <FaNodeJs />,
     path: "http://calitechco.com/",
-    details: "Merchant services offering more than lowest rates went from no web presence to a beautiful WordPress site."
+    details: "Merchant services offering more than lowest rates went from no web presence to a beautiful WordPress site.",
   },
   {
     name: "California Pools",
     icon: <SiMongodb />,
     path: "https://california-pools.herokuapp.com/",
-    details: "A sample site created to show a simple site made from ReactJS."
+    details: "A sample site created to show a simple site made from ReactJS.",
+    githubPath: "https://github.com/trizmo/californiaPools"
   },
   {
     name: "Verigate",
     icon: <SiMongodb />,
     path: null,
-    details: "A Web based Prototype Wifi Gate Opener"
+    details: "A Web based Prototype Wifi Gate Opener",
+    githubPath: "https://github.com/quipsquaff/VERIGATE"
   },
   {
     name: "Ginger Red Naturals",
     icon: <SiMongodb />,
     path: "https://www.gingerrednaturals.com/",
-    details: "A Beautiful WordPress site displaying clients products along with a blog for their thoughts."
+    details: "A Beautiful WordPress site displaying clients products along with a blog for their thoughts.",
+    githubPath: "https://github.com/MrStevenNg/GingerRed-Naturals"
   },
   {
     name: "Battle-Tactics",
     icon: <SiMongodb />,
     path: null,
-    details: "A fully Mobile strategy planning app for table-top games."
+    details: "A fully Mobile strategy planning app for table-top games.",
+    githubPath: "https://github.com/MrStevenNg/Battle-Tactics"
   },
 
 ]
@@ -56,6 +60,8 @@ class Portfolio extends Component {
   handleLearnMore(port) {
     this.setState({
       learnmore: port
+    }, () => {
+      window.location.href = `/#learnmore`
     })
   }
   render() {
@@ -74,6 +80,11 @@ class Portfolio extends Component {
                 <div onClick={() => this.handleLearnMore(item)}>
                   <p>LEARN MORE</p> <FaInfoCircle />
                 </div>
+                {item.githubPath ? (
+                  <a href={item.githubPath} target="_blank">
+                    <p>Repo</p> <FaGithub />
+                  </a>
+                ) : (null)}
                 {item.path ? (
                   <a href={item.path} target="_blank">
                     <p>VISIT</p> <FaArrowCircleRight />
@@ -86,7 +97,7 @@ class Portfolio extends Component {
         </div>
 
         {this.state.learnmore ? (
-          <div className='component-wrapper'>
+          <div className='component-wrapper' id="learnmore">
             <div className='container-left'>
               <h4>{this.state.learnmore.name}</h4>
             </div>
