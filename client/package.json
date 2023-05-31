@@ -15,11 +15,19 @@
     "reactstrap": "^8.5.1"
   },
   "proxy": "http://localhost:5000",
+  "config": {
+    "server": "3.145.25.163",
+    "key": "../secrets/endline_solutions_main_admin.pem",
+    "memory": "800",
+    "user": "ubuntu"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "rsync -rvht --partial --delete -e 'ssh -i ../secrets/endline_solutions_main_admin.pem' --exclude='node_modules' --exclude='public' --exclude='src' --exclude='package-lock.json' --exclude='log.txt' --exclude='.git' --exclude='.DS_Store' --exclude='package.json' --exclude='yarn.lock' --exclude='.gitignore' --exclude='README.md' . $npm_package_config_user@$npm_package_config_server:~/reactbuilds/tristanperera; ssh -i $npm_package_config_key $npm_package_config_user@$npm_package_config_server 'cd reactbuilds/tristanperera; sudo rm -rf /var/www/tristanperera; sudo mv ~/reactbuilds/tristanperera/build /var/www/tristanperera; touch deploy'",
+    "ssh": "ssh -i $npm_package_config_key $npm_package_config_user@$npm_package_config_server"
   },
   "eslintConfig": {
     "extends": "react-app"
